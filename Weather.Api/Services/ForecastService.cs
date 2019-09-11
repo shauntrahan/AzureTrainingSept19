@@ -31,6 +31,7 @@
             }
 
             return from f in forecastData
+                   orderby f.WeatherStation.ICAO, f.WeatherDate, f.HE
                    select new Forecast
                    {
                        WeatherStation = f.WeatherStation.ICAO,
