@@ -1,0 +1,26 @@
+<h1>Weather forecast</h1>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table' *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>Station</th>
+      <th>Date</th>
+      <th>Hour Ending</th>
+      <th>Temp. (F)</th>
+      <th>Humidity</th>
+      <th>Dew Point</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts">
+      <td>{{ forecast.weatherStation }}</td>
+      <td>{{ forecast.weatherDate }}</td>
+      <td>{{ forecast.hourEnding }}</td>
+      <td>{{ forecast.temperature }}</td>
+      <td>{{ forecast.humidity }}</td>
+      <td>{{ forecast.dewPoint }}</td>
+    </tr>
+  </tbody>
+</table>
