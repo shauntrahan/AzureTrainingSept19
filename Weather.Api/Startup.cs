@@ -12,6 +12,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
+    using Weather.Api.Data;
+    using Weather.Api.Services;
+    using Microsoft.EntityFrameworkCore;
 
     public class Startup
     {
@@ -27,6 +30,11 @@
         {
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<WeatherContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WeatherDatabase")));
+
+            services.AddScoped<IForecastService, ForecastService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

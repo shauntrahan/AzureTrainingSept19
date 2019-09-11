@@ -1,7 +1,10 @@
-﻿namespace Weather.Api.Models
-{
-    using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
+namespace Weather.Api.Models
+{
     public class Forecast
     {
         public string WeatherStation { get; set; }
