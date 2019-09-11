@@ -25,6 +25,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -39,6 +40,12 @@
             {
                 app.UseHsts();
             }
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("https://localhost:44319",
+                                    "http://localhost:5001");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
